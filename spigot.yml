@@ -1,0 +1,17 @@
+merge radius: 
+    item : -1
+    exp: -1
+entity-activation-range:
+    animals: 128
+    monsters: 128
+    raiders: 128
+    misc: 128
+    water: 128
+    villagers: 128
+    flying-monsters: 128
+entity-tracking-range:
+    players: 144
+    animals: 128
+    monsters: 128
+    misc: 128
+    other: 128
