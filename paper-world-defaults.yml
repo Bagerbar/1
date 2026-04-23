@@ -1,0 +1,6 @@
+view-distance: 10
+simulation-distance: 8
+entity-activation-range:
+  animals: 16
+  monsters: 24
+  raiders: 48
