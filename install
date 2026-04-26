@@ -29,26 +29,23 @@ download_mod () {
 }
 
 download_mod "Fabric API" fabric-api.jar \
-"https://cdn.modrinth.com/data/P7dR8mSH/versions/latest/fabric-api.jar"
+"https://cdn.modrinth.com/data/P7dR8mSH/versions/i5tSkVBH/fabric-api-0.141.3%2B1.21.11.jar"
 
 download_mod "Tectonic" tectonic.jar \
-"https://cdn.modrinth.com/data/lWDHr9jE/versions/latest/tectonic.jar"
+"https://cdn.modrinth.com/data/lWDHr9jE/versions/7olSYFxL/tectonic-3.0.19-fabric-1.21.11.jar"
 
 download_mod "Lithium" lithium.jar \
-"https://cdn.modrinth.com/data/gvQqBUqZ/versions/latest/lithium.jar"
-
-download_mod "Starlight" starlight.jar \
-"https://cdn.modrinth.com/data/H8CaAYZC/versions/latest/starlight.jar"
+"https://cdn.modrinth.com/data/gvQqBUqZ/versions/Ow7wA0kG/lithium-fabric-0.21.4%2Bmc1.21.11.jar"
 
 download_mod "FerriteCore" ferritecore.jar \
-"https://cdn.modrinth.com/data/uXXizFIs/versions/latest/ferritecore.jar"
+"https://cdn.modrinth.com/data/uXXizFIs/versions/Ii0gP3D8/ferritecore-8.2.0-fabric.jar"
 
 download_mod "Chunky" chunky.jar \
-"https://cdn.modrinth.com/data/fALzjamp/versions/latest/chunky.jar"
+"https://cdn.modrinth.com/data/fALzjamp/versions/1CpEkmcD/Chunky-Fabric-1.4.55.jar"
 
 echo "== terralith datapack =="
 wget -q -O world/datapacks/terralith.zip \
-"https://cdn.modrinth.com/data/8oi3bsk5/versions/latest/Terralith.zip"
+"https://cdn.modrinth.com/data/8oi3bsk5/versions/vVdNToqE/Terralith_1.21.11_v2.6.1_Fabric.jar"
 
 echo "== start script =="
 cat > start.sh <<'EOF'
