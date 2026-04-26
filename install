@@ -23,24 +23,20 @@ sed -i 's/eula=false/eula=true/' eula.txt
 mkdir -p mods world/datapacks
 
 echo "== mods =="
-download_mod () {
-  echo "-> $1"
-  wget -q -O "mods/$2" "$3"
-}
 
-download_mod "Fabric API" fabric-api.jar \
+wget -q -O fabric-api.jar \
 "https://cdn.modrinth.com/data/P7dR8mSH/versions/i5tSkVBH/fabric-api-0.141.3%2B1.21.11.jar"
 
-download_mod "Tectonic" tectonic.jar \
+wget -q -O tectonic.jar \
 "https://cdn.modrinth.com/data/lWDHr9jE/versions/7olSYFxL/tectonic-3.0.19-fabric-1.21.11.jar"
 
-download_mod "Lithium" lithium.jar \
+wget -q -O lithium.jar \
 "https://cdn.modrinth.com/data/gvQqBUqZ/versions/Ow7wA0kG/lithium-fabric-0.21.4%2Bmc1.21.11.jar"
 
-download_mod "FerriteCore" ferritecore.jar \
+wget -q -O ferritecore.jar \
 "https://cdn.modrinth.com/data/uXXizFIs/versions/Ii0gP3D8/ferritecore-8.2.0-fabric.jar"
 
-download_mod "Chunky" chunky.jar \
+wget -q -O chunky.jar \
 "https://cdn.modrinth.com/data/fALzjamp/versions/1CpEkmcD/Chunky-Fabric-1.4.55.jar"
 
 echo "== terralith datapack =="
