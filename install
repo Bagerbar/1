@@ -1,0 +1,73 @@
+#!/bin/bash
+set -euo pipefail
+
+MC_VERSION="1.21.11"
+FABRIC_LOADER="0.19.1"
+INSTALLER="1.1.1"
+DIR="/srv/minecraft/fabric"
+
+echo "== creating dir =="
+mkdir -p "$DIR"
+cd "$DIR"
+
+echo "== downloading fabric server =="
+wget -q -O fabric-server.jar \
+"https://meta.fabricmc.net/v2/versions/loader/$MC_VERSION/$FABRIC_LOADER/$INSTALLER/server/jar"
+
+echo "== first run =="
+java -Xmx2G -jar fabric-server.jar || true
+
+echo "== eula =="
+sed -i 's/eula=false/eula=true/' eula.txt
+
+mkdir -p mods world/datapacks
+
+echo "== mods =="
+download_mod () {
+  echo "-> $1"
+  wget -q -O "mods/$2" "$3"
+}
+
+download_mod "Fabric API" fabric-api.jar \
+"https://cdn.modrinth.com/data/P7dR8mSH/versions/latest/fabric-api.jar"
+
+download_mod "Tectonic" tectonic.jar \
+"https://cdn.modrinth.com/data/lWDHr9jE/versions/latest/tectonic.jar"
+
+download_mod "Lithium" lithium.jar \
+"https://cdn.modrinth.com/data/gvQqBUqZ/versions/latest/lithium.jar"
+
+download_mod "Starlight" starlight.jar \
+"https://cdn.modrinth.com/data/H8CaAYZC/versions/latest/starlight.jar"
+
+download_mod "FerriteCore" ferritecore.jar \
+"https://cdn.modrinth.com/data/uXXizFIs/versions/latest/ferritecore.jar"
+
+download_mod "Chunky" chunky.jar \
+"https://cdn.modrinth.com/data/fALzjamp/versions/latest/chunky.jar"
+
+echo "== terralith datapack =="
+wget -q -O world/datapacks/terralith.zip \
+"https://cdn.modrinth.com/data/8oi3bsk5/versions/latest/Terralith.zip"
+
+echo "== start script =="
+cat > start.sh <<'EOF'
+#!/bin/bash
+
+nice -n -5 java -Xms12G -Xmx12G \
+-XX:+UseG1GC \
+-XX:+ParallelRefProcEnabled \
+-XX:MaxGCPauseMillis=200 \
+-XX:G1ReservePercent=20 \
+-XX:+UnlockExperimentalVMOptions \
+-XX:+DisableExplicitGC \
+-XX:+AlwaysPreTouch \
+-XX:ParallelGCThreads=$(nproc) \
+-XX:ConcGCThreads=$(nproc) \
+-jar fabric-server.jar nogui
+EOF
+
+chmod +x start.sh
+
+echo "== done =="
+echo "run: ./start.sh"
